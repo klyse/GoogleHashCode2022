@@ -1,7 +1,6 @@
-﻿namespace GoogleHashCode.Base
+﻿namespace GoogleHashCode.Base;
+
+public interface ISolver<in TInput, out TOutput> where TOutput : IOutput
 {
-	public interface ISolver<in TInput, out TOutput> where TOutput : IOutput
-	{
-		TOutput Solve(TInput input);
-	}
+    TOutput Solve(TInput input);
 }

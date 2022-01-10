@@ -1,10 +1,9 @@
 ﻿using GoogleHashCode.Model;
 
-namespace GoogleHashCode.Base
+namespace GoogleHashCode.Base;
+
+public interface IOutput
 {
-	public interface IOutput
-	{
-		string[] GetOutputFormat();
-		int GetScore(Input input);
-	}
+    string[] GetOutputFormat();
+    int GetScore(Input input);
 }

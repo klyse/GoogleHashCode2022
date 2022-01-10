@@ -6,7 +6,6 @@ Input folder: `\input`.
 
 Solutions will be written to `\output` (created by UnitTest).
 
-
 ```
 .
 ├── input
@@ -19,9 +18,7 @@ Solutions will be written to `\output` (created by UnitTest).
     ├── f3.txt
 ```
 
-
 ## Results
-
 
 These are the best scores we archived using various different versions of our algorithms.
 
@@ -47,17 +44,18 @@ The score can be checked in the unit test output...
 | Italy |  |  | Rank filtered by country |
 | World |  |  | Total rank |
 
-
 Team name: **DevPirates**
 
 \#DevPiratesRule
 
 ## Helpful commands
+
 ```bash
 git archive --format zip --output [replace with solution dir]\Environment\output\source.zip head
 ```
 
 ## Authors
+
 VolkmarR: [@VolkmarR](https://github.com/VolkmarR/)
 
 Klyse: [@Klyse](https://github.com/klyse/)
