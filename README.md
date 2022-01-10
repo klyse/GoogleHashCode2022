@@ -51,7 +51,7 @@ Team name: **DevPirates**
 ## Helpful commands
 
 ```bash
-git archive --format zip --output [replace with solution dir]\Environment\output\source.zip head
+git archive --format zip --output source.zip head
 ```
 
 ## Authors
