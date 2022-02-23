@@ -19,7 +19,7 @@ public class KlysesTest
     public void Test(string example)
     {
         var content = example.ReadFromFile();
-        var solver = new Solver1();
+        var solver = new SolverK1();
         var input = Input.Parse(content);
         var output = solver.Solve(input);
 

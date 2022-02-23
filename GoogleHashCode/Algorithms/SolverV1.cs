@@ -5,7 +5,7 @@ using GoogleHashCode.Model;
 
 namespace GoogleHashCode.Algorithms;
 
-public class Solver2 : ISolver<Input, Output>
+public class SolverV1 : ISolver<Input, Output>
 {
     public Output Solve(Input input)
     {

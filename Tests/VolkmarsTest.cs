@@ -19,7 +19,7 @@ public class VolkmarsTest
     public void Solver2(string example)
     {
         var content = example.ReadFromFile();
-        var solver = new Solver2();
+        var solver = new SolverV1();
         var input = Input.Parse(content);
         var output = solver.Solve(input);
 
