@@ -6,7 +6,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Neo.Matrix" Version="2.1.0"/>
+		<PackageReference Include="Neo.Matrix" Version="2.1.0" />
 	</ItemGroup>
 
 </Project>
