@@ -15,6 +15,8 @@ public record Contributor(string Name, List<Skill> Skills)
         return null;
     }
 
+    public Skill GetSkill(Skill skill) => GetSkill(skill.Name);
+    public int GetSkillLevel(Skill skill) => GetSkill(skill.Name)?.SkillLevel ?? 0;
 }
 public record Project(string Name, int Days, int Score, int BestBefore, List<Skill> Skills);
 
