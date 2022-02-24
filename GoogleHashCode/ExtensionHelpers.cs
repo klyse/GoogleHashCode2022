@@ -28,7 +28,7 @@ public static class ExtensionHelpers
         if (skill.SkillLevel == 0)
             return true;
 
-        return contributor.Skills.Any(q => q.SkillLevel >= skill.SkillLevel);
+        return contributor.Skills.Any(q => q.Name == skill.Name && q.SkillLevel >= skill.SkillLevel);
     }
 
 }
