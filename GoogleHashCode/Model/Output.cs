@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using GoogleHashCode.Base;
 using System.Linq;
+using System;
 
 namespace GoogleHashCode.Model;
 
@@ -18,6 +19,20 @@ public class Assignment
             return true;
 
         return (skillLevel == requiredSkill.SkillLevel - 1) && Contributors.Any(q => q.GetSkillLevel(requiredSkill) >= requiredSkill.SkillLevel);
+    }
+
+    public void LevelUpContributors()
+    {
+        if (!AllSkillsAssigned)
+            throw new Exception("Not all assigned");
+
+        for (int i = 0; i < Project.Skills.Count; i++)
+        {
+            var skill = Project.Skills[i];
+            var contrib = Contributors[i];
+            if (contrib.GetSkillLevel(skill) <= skill.SkillLevel)
+                contrib.LevelUp(skill);
+        }
     }
 
     public Assignment() { }

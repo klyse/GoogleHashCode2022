@@ -35,6 +35,7 @@ public class SolverV1 : ISolver<Input, Output>
                 if (assignment.AllSkillsAssigned)
                 {
                     output.Assignments.Add(assignment);
+                    assignment.LevelUpContributors();
                     assigned = true;
                 }
                 else

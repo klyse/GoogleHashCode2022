@@ -4,15 +4,30 @@ using System.Linq;
 
 namespace GoogleHashCode.Model;
 
-public record Contributor(string Name, List<Skill> Skills) : IEqualityComparer<Contributor>
+public class Contributor : IEqualityComparer<Contributor>
 {
-    private Dictionary<string, Skill> _Skill = Skills.ToDictionary(q => q.Name, q => q);
+    public string Name { get; init; }
+    public IReadOnlyList<Skill> Skills => _SkillList;
+
+    private List<Skill> _SkillList;
+
+    private Dictionary<string, Skill> _SkillIndex;
 
     public Skill GetSkill(string skill)
     {
-        if (_Skill.ContainsKey(skill))
-            return _Skill[skill];
+        if (_SkillIndex.ContainsKey(skill))
+            return _SkillIndex[skill];
+
+        var x = _SkillIndex.Values;
+
         return null;
+    }
+
+    public Contributor(string name, List<Skill> skills)
+    {
+        Name = name;
+        _SkillIndex = skills.ToDictionary(q => q.Name, q => q);
+        _SkillList = skills;
     }
 
     public bool Equals(Contributor x, Contributor y)
@@ -28,9 +43,22 @@ public record Contributor(string Name, List<Skill> Skills) : IEqualityComparer<C
     {
         return obj.Name.GetHashCode();
     }
-    
+
     public Skill GetSkill(Skill skill) => GetSkill(skill.Name);
     public int GetSkillLevel(Skill skill) => GetSkill(skill.Name)?.SkillLevel ?? 0;
+
+    public void LevelUp(Skill skill)
+    {
+        var current = GetSkill(skill.Name);
+        if (current == null)
+        {
+            current = new Skill { Name = skill.Name, SkillLevel = 0 };
+            _SkillIndex[current.Name] = current;
+            _SkillList.Add(current);
+        }
+
+        current.SkillLevel++;
+    }
 }
 public record Project(string Name, int Days, int Score, int BestBefore, List<Skill> Skills);
 
@@ -71,7 +99,7 @@ public record Input(List<Contributor> Contributors, List<Project> Projects)
             }
             contributorsList.Add(new Contributor(name, skillsList));
         }
-        
+
         for (var i = 0; i < projects; i++)
         {
             var splitRow = values[row].Split(" ", StringSplitOptions.RemoveEmptyEntries);
