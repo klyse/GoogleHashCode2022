@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace GoogleHashCode.Model;
 
-public record Contributor(string Name, List<Skill> Skills)
+public record Contributor(string Name, List<Skill> Skills) : IEqualityComparer<Contributor>
 {
     private Dictionary<string, Skill> _Skill = Skills.ToDictionary(q => q.Name, q => q);
 
@@ -15,6 +15,19 @@ public record Contributor(string Name, List<Skill> Skills)
         return null;
     }
 
+    public bool Equals(Contributor x, Contributor y)
+    {
+        if (ReferenceEquals(x, y)) return true;
+        if (ReferenceEquals(x, null)) return false;
+        if (ReferenceEquals(y, null)) return false;
+        if (x.GetType() != y.GetType()) return false;
+        return x.Name == y.Name;
+    }
+
+    public int GetHashCode(Contributor obj)
+    {
+        return obj.Name.GetHashCode();
+    }
 }
 public record Project(string Name, int Days, int Score, int BestBefore, List<Skill> Skills);
 
