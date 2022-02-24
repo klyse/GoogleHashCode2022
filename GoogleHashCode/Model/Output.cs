@@ -7,8 +7,10 @@ namespace GoogleHashCode.Model;
 public record Assignment(Project Project, List<Contributor> Contributors);
 
 
-public record Output(List<Assignment> Assignments) : IOutput
+public class Output : IOutput
 {
+    public List<Assignment> Assignments { get; set; } = new();
+
     public string[] GetOutputFormat()
     {
         var output = new List<string>();
