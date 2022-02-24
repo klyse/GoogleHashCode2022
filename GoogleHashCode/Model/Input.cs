@@ -4,9 +4,26 @@ using System.Linq;
 
 namespace GoogleHashCode.Model;
 
-public record Contributor(string Name, List<Skills> Skills);
-public record Project(string Name, int Days, int Score, int BestBefore, List<Skills> Skills);
-public record Skills(string Name, int SkillLevel);
+public record Contributor(string Name, List<Skill> Skills)
+{
+    private Dictionary<string, Skill> _Skill = Skills.ToDictionary(q => q.Name, q => q);
+
+    public Skill GetSkill(string skill)
+    {
+        if (_Skill.ContainsKey(skill))
+            return _Skill[skill];
+        return null;
+    }
+
+}
+public record Project(string Name, int Days, int Score, int BestBefore, List<Skill> Skills);
+
+public class Skill
+{
+    public string Name { get; init; }
+    public int SkillLevel { get; set; }
+
+}
 
 public record Input(List<Contributor> Contributors, List<Project> Projects)
 {
@@ -26,14 +43,14 @@ public record Input(List<Contributor> Contributors, List<Project> Projects)
             var name = splitRow[0];
             var count = int.Parse(splitRow[1]);
 
-            var skillsList = new List<Skills>();
+            var skillsList = new List<Skill>();
             row += 1;
             for (var y = 0; y < count; y++)
             {
                 var splitRow1 = values[row].Split(" ", StringSplitOptions.RemoveEmptyEntries);
                 var skillName = splitRow1[0];
                 var level = int.Parse(splitRow1[1]);
-                skillsList.Add(new Skills(skillName, level));
+                skillsList.Add(new Skill { Name = skillName, SkillLevel = level });
                 row += 1;
             }
             contributorsList.Add(new Contributor(name, skillsList));
@@ -48,14 +65,14 @@ public record Input(List<Contributor> Contributors, List<Project> Projects)
             var bestBefore = int.Parse(splitRow[3]);
             var roles = int.Parse(splitRow[4]);
 
-            var skillsList = new List<Skills>();
+            var skillsList = new List<Skill>();
             row += 1;
             for (var y = 0; y < roles; y++)
             {
                 var splitRow1 = values[row].Split(" ", StringSplitOptions.RemoveEmptyEntries);
                 var skillName = splitRow1[0];
                 var level = int.Parse(splitRow1[1]);
-                skillsList.Add(new Skills(skillName, level));
+                skillsList.Add(new Skill { Name = skillName, SkillLevel = level });
                 row += 1;
             }
             projectsList.Add(new Project(name, numDays, score, bestBefore, skillsList));

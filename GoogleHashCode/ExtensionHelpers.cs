@@ -23,7 +23,7 @@ public static class ExtensionHelpers
         WriteToFile(fileName, new List<string> { line }.ToArray());
     }
 
-    public static bool HasSkill(this Contributor contributor, Skills skill)
+    public static bool HasSkill(this Contributor contributor, Skill skill)
     {
         if (skill.SkillLevel == 0)
             return true;
