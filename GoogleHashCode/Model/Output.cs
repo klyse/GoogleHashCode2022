@@ -4,8 +4,17 @@ using System.Linq;
 
 namespace GoogleHashCode.Model;
 
-public record Assignment(Project Project, List<Contributor> Contributors);
+public class Assignment
+{
+    public Project Project { get; set; }
+    public  List<Contributor> Contributors { get; set; } = new();
 
+    public Assignment() { }
+    public Assignment(Project project) 
+    {
+        Project = project;
+    }
+}
 
 public class Output : IOutput
 {
