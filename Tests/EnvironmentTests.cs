@@ -1,6 +1,3 @@
-using System.IO;
-using GoogleHashCode;
-using NUnit.Framework;
 
 namespace Tests;
 

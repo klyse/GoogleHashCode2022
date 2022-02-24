@@ -1,9 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using GoogleHashCode.Base;
-using GoogleHashCode.Model;
-
-namespace GoogleHashCode.Algorithms;
+﻿namespace GoogleHashCode.Algorithms;
 
 public class SolverV1 : ISolver<Input, Output>
 {
@@ -30,7 +25,7 @@ public class SolverV1 : ISolver<Input, Output>
         var requiredSkillLevel = isMentorAvailable ? requiredSkill.SkillLevel - 1 : requiredSkill.SkillLevel;
 
 
-        var candidateInfo = list
+        var candidateInfo = SkillIndex[requiredSkill.Name]
                 .Select(q => new { candidate = q, level = q.GetSkillLevel(requiredSkill) })
                 .Where(q => q.level >= requiredSkillLevel && !assignment.Contributors.Any(s => s == q.candidate))
                 .OrderBy(q => BlockedTill[q.candidate]).ThenBy( q => q.level).ThenBy(q => q.candidate.Skills.Count)

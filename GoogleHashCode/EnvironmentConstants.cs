@@ -1,8 +1,4 @@
-﻿using System;
-using System.IO;
-using System.Linq;
-
-namespace GoogleHashCode;
+﻿namespace GoogleHashCode;
 
 public static class EnvironmentConstants
 {
