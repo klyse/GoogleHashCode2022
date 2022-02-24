@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using GoogleHashCode.Model;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace GoogleHashCode;
 
@@ -20,4 +22,13 @@ public static class ExtensionHelpers
     {
         WriteToFile(fileName, new List<string> { line }.ToArray());
     }
+
+    public static bool HasSkill(this Contributor contributor, Skills skill)
+    {
+        if (skill.SkillLevel == 0)
+            return true;
+
+        return contributor.Skills.Any(q => q.SkillLevel >= skill.SkillLevel);
+    }
+
 }

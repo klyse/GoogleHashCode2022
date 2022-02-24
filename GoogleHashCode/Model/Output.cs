@@ -9,6 +9,8 @@ public class Assignment
     public Project Project { get; set; }
     public  List<Contributor> Contributors { get; set; } = new();
 
+    public bool AllSkillsAssigned => Project.Skills.Count == Contributors.Count;
+
     public Assignment() { }
     public Assignment(Project project) 
     {
