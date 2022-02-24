@@ -5,10 +5,10 @@ using System.Linq;
 namespace GoogleHashCode.Model;
 
 public record Contributor(string Name, List<Skills> Skills);
-
+public record Project(string Name, int Days, int Score, int BestBefore, List<Skills> Skills);
 public record Skills(string Name, int SkillLevel);
 
-public record Input(List<Contributor> Contributors)
+public record Input(List<Contributor> Contributors, List<Project> Projects)
 {
     public static Input Parse(string[] values)
     {
