@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using GoogleHashCode.Base;
 using GoogleHashCode.Model;
 
@@ -10,7 +11,11 @@ public class SolverK1 : ISolver<Input, Output>
     {
         var output = new Output();
 
-        foreach (var project in input.Projects.OrderByDescending(c => c.Score))
+        IDictionary<Contributor, int> blockedTill = input.Contributors.ToDictionary(c => c, _ => 0);
+
+        foreach (var project in input.Projects
+                     .OrderBy(c => c.BestBefore)
+                     .ThenByDescending(c => c.Score))
         {
             var assignment = new Assignment();
             var notFount = false;
@@ -18,13 +23,23 @@ public class SolverK1 : ISolver<Input, Output>
             {
                 var contributor = input.Contributors
                     .Except(assignment.Contributors)
-                    .FirstOrDefault(c => c.Skills.Any(r => r.Name == skill.Name && r.SkillLevel >= skill.SkillLevel));
+                    .Where(c => c.Skills.Any(r => r.Name == skill.Name && 
+                                                  (r.SkillLevel >= skill.SkillLevel ||
+                                                   r.SkillLevel >= skill.SkillLevel -1 &&
+                                                   assignment.Contributors.Any(y => y.GetSkill(skill.Name)?.SkillLevel >= skill.SkillLevel))))
+                    .OrderBy(c => blockedTill[c])
+                    .FirstOrDefault();
+                
                 if (contributor is null)
                 {
                     notFount = true;
                     continue;
                 }
 
+                // var contributorSkill = contributor.GetSkill(skill.Name);
+                // contributorSkill.SkillLevel += 1;
+
+                blockedTill[contributor] += project.Days;
                 assignment.Contributors.Add(contributor);
             }
 
