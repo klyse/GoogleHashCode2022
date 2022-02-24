@@ -51,7 +51,7 @@ Team name: **DevPirates**
 ## Helpful commands
 
 ```bash
-git archive --format zip --output ./Environment/Output/source.zip head
+git archive --worktree-attributes --format zip --output ./Environment/Output/source.zip head
 ```
 
 ## Authors
