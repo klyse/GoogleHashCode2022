@@ -1,24 +1,22 @@
 ﻿using System.Collections.Generic;
 using GoogleHashCode.Base;
+using System.Linq;
 
 namespace GoogleHashCode.Model;
 
-public record StreetSchedule(string StreetName, int DurationGreen);
+public record Assignment(Project Project, List<Contributor> Contributors);
 
-public record Intersection(int ID, List<StreetSchedule> StreetsSchedule);
 
-public record Output(List<Intersection> Intersections) : IOutput
+public record Output(List<Assignment> Assignments) : IOutput
 {
     public string[] GetOutputFormat()
     {
         var output = new List<string>();
-        output.Add(Intersections.Count.ToString());
-        foreach (var intersection in Intersections)
+        output.Add(Assignments.Count.ToString());
+        foreach (var assignment in Assignments)
         {
-            output.Add(intersection.ID.ToString());
-            output.Add(intersection.StreetsSchedule.Count.ToString());
-            foreach (var streetSchedule in intersection.StreetsSchedule)
-                output.Add($"{streetSchedule.StreetName} {streetSchedule.DurationGreen}");
+            output.Add(assignment.Project.Name);
+            output.Add(string.Join(" ", assignment.Contributors.Select(q => q.Name)));
         }
 
         return output.ToArray();
