@@ -22,31 +22,31 @@ Solutions will be written to `\output` (created by UnitTest).
 
 These are the best scores we archived using various different versions of our algorithms.
 
-| Case                  |  Points  |
-|-----------------------|----------|
-| A – An example |  |
-| B – By the ocean |  |
-| C – Checkmate |  |
-| D – Daily commute |  |
-| E – Etoile |  |
-| F – Forever jammed |  |
-| **TOTAL** | **xxx** |
+| Case                   | Points  |
+|------------------------|---------|
+| A - An example         | 33      |
+| B - Better start small |    799879     |
+| C - Collaboration      |    126518     |
+| D - Dense schedule     |    173626     |
+| E - Exceptional skills |     1640172    |
+| F - Find great mentors     |     232049    |
+| **TOTAL**              | **2972277** |
 
 The score can be checked in the unit test output...
 
 ### Score Board
 
-[Public Score Board](https://hashcodejudge.withgoogle.com/scoreboard)
+[Public Score Board](https://codingcompetitions.withgoogle.com/hashcode/round/00000000008caae7)
 
-| Name                 | Rank | Participants | Description             |
-| -------------------- | ---- | ------------ | ----------------------- |
-| Hub |  |  | Austria / GDG-Innsbruck |
-| Italy |  |  | Rank filtered by country |
-| World |  |  | Total rank |
+| Name                 | Rank       | Participants | Description              |
+| -------------------- |------------| ------------ |--------------------------|
+| Italy | 14         |  | Rank filtered by country |
+| World | 340 top 4% | 9031 | Total rank **OMG**       |
 
 Team name: **DevPirates**
 
 \#DevPiratesRule
+\#HashCodeSolved
 
 ## Helpful commands
 
