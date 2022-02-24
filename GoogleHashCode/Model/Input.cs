@@ -19,14 +19,14 @@ public record Input(List<Contributor> Contributors, List<Project> Projects)
         var contributorsList = new List<Contributor>();
         var projectsList = new List<Project>();
 
-        for (int i = 1; i < contributors; i++)
+        for (var i = 1; i < contributors; )
         {
             var splitRow = values[i].Split(" ", StringSplitOptions.RemoveEmptyEntries);
             var name = splitRow[0];
             var count = int.Parse(splitRow[1]);
 
             var skillsList = new List<Skills>();
-            for (int y = i + 1; y < i + count; y++)
+            for (var y = 0; y < count;i++, y++)
             {
                 var splitRow1 = values[i].Split(" ", StringSplitOptions.RemoveEmptyEntries);
                 var skillName = splitRow1[0];
