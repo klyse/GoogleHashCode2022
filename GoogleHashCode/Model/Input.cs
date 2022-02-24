@@ -19,19 +19,22 @@ public record Input(List<Contributor> Contributors, List<Project> Projects)
         var contributorsList = new List<Contributor>();
         var projectsList = new List<Project>();
 
-        for (var i = 1; i < contributors; )
+        var row = 1;
+        for (var i = 0; i < contributors; i++)
         {
-            var splitRow = values[i].Split(" ", StringSplitOptions.RemoveEmptyEntries);
+            var splitRow = values[row].Split(" ", StringSplitOptions.RemoveEmptyEntries);
             var name = splitRow[0];
             var count = int.Parse(splitRow[1]);
 
             var skillsList = new List<Skills>();
-            for (var y = 0; y < count;i++, y++)
+            row += 1;
+            for (var y = 0; y < count; y++)
             {
-                var splitRow1 = values[i].Split(" ", StringSplitOptions.RemoveEmptyEntries);
+                var splitRow1 = values[row].Split(" ", StringSplitOptions.RemoveEmptyEntries);
                 var skillName = splitRow1[0];
                 var level = int.Parse(splitRow1[1]);
                 skillsList.Add(new Skills(skillName, level));
+                row += 1;
             }
             contributorsList.Add(new Contributor(name, skillsList));
         }
