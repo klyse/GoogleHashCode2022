@@ -24,22 +24,19 @@ public class SolverK1 : ISolver<Input, Output>
             {
                 var contributor = input.Contributors
                     .Except(assignment.Contributors)
-                    .Where(c => c.Skills.Any(r => r.Name == skill.Name && 
+                    .Where(c => c.Skills.Any(r => r.Name == skill.Name &&
                                                   (r.SkillLevel >= skill.SkillLevel ||
-                                                   r.SkillLevel >= skill.SkillLevel -1 &&
-                                                   assignment.Contributors.Any(y => y.GetSkill(skill.Name)?.SkillLevel >= skill.SkillLevel))))
+                                                   r.SkillLevel >= skill.SkillLevel - 1 &&
+                                                   assignment.Contributors.Any(y => y.GetSkillLevel(skill) >= skill.SkillLevel))))
                     .OrderBy(c => blockedTill[c])
+                    .ThenBy(c => c.Skills.Count)
                     .FirstOrDefault();
-                
+
                 if (contributor is null)
                 {
                     notFount = true;
                     break;
                 }
-
-                var contributorSkill = contributor.GetSkill(skill.Name);
-                if (contributorSkill.SkillLevel <= skill.SkillLevel)
-                    contributorSkill.SkillLevel += 1;
 
                 blockedTill[contributor] += project.Days;
                 assignment.Contributors.Add(contributor);
@@ -47,8 +44,10 @@ public class SolverK1 : ISolver<Input, Output>
 
             if (notFount)
                 continue;
+            
             assignment.Project = project;
             output.Assignments.Add(assignment);
+            assignment.LevelUpContributors();
         }
 
         return output;
