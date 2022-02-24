@@ -15,6 +15,7 @@ public class SolverK1 : ISolver<Input, Output>
 
         foreach (var project in input.Projects
                      .OrderBy(c => c.BestBefore)
+                     .ThenBy(c => c.Days)
                      .ThenByDescending(c => c.Score))
         {
             var assignment = new Assignment();
@@ -33,11 +34,12 @@ public class SolverK1 : ISolver<Input, Output>
                 if (contributor is null)
                 {
                     notFount = true;
-                    continue;
+                    break;
                 }
 
-                // var contributorSkill = contributor.GetSkill(skill.Name);
-                // contributorSkill.SkillLevel += 1;
+                var contributorSkill = contributor.GetSkill(skill.Name);
+                if (contributorSkill.SkillLevel <= skill.SkillLevel)
+                    contributorSkill.SkillLevel += 1;
 
                 blockedTill[contributor] += project.Days;
                 assignment.Contributors.Add(contributor);
