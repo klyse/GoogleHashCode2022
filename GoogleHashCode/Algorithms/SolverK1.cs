@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using GoogleHashCode.Base;
 using GoogleHashCode.Model;
 
@@ -11,7 +10,7 @@ public class SolverK1 : ISolver<Input, Output>
     {
         var output = new Output();
 
-        foreach (var project in input.Projects)
+        foreach (var project in input.Projects.OrderByDescending(c => c.Score))
         {
             var assignment = new Assignment();
             var notFount = false;
