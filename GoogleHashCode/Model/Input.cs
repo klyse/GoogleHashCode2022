@@ -18,6 +18,10 @@ public record Input(List<Contributor> Contributors)
         
         foreach (var row in values.Skip(1))
         {
+            var splitRow = row.Split(" ", StringSplitOptions.RemoveEmptyEntries).ToList();
+            var name = splitRow[0];
+            var count = int.Parse(splitRow[1]);
+            
             
         }
     }
