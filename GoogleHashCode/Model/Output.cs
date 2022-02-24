@@ -1,9 +1,4 @@
-﻿using System.Collections.Generic;
-using GoogleHashCode.Base;
-using System.Linq;
-using System;
-
-namespace GoogleHashCode.Model;
+﻿namespace GoogleHashCode.Model;
 
 public class Assignment
 {

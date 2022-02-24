@@ -1,9 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using GoogleHashCode.Base;
-using GoogleHashCode.Model;
-
-namespace GoogleHashCode.Algorithms;
+﻿namespace GoogleHashCode.Algorithms;
 
 public class SolverK1 : ISolver<Input, Output>
 {

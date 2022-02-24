@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace GoogleHashCode.Model;
+﻿namespace GoogleHashCode.Model;
 
 public class Contributor : IEqualityComparer<Contributor>
 {

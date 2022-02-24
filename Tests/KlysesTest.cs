@@ -1,9 +1,3 @@
-using System;
-using GoogleHashCode;
-using GoogleHashCode.Algorithms;
-using GoogleHashCode.Model;
-using NUnit.Framework;
-
 namespace Tests;
 
 public class KlysesTest

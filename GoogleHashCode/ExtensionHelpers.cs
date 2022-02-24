@@ -1,9 +1,4 @@
-﻿using GoogleHashCode.Model;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-
-namespace GoogleHashCode;
+﻿namespace GoogleHashCode;
 
 public static class ExtensionHelpers
 {

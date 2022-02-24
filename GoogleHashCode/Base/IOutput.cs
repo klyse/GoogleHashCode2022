@@ -1,6 +1,4 @@
-﻿using GoogleHashCode.Model;
-
-namespace GoogleHashCode.Base;
+﻿namespace GoogleHashCode.Base;
 
 public interface IOutput
 {
