@@ -9,11 +9,11 @@ public class EnvironmentTests
     [OneTimeSetUp]
     public void Setup()
     {
-        if (!string.IsNullOrWhiteSpace(EnvironmentConstants.OutputPath))
-            Directory.CreateDirectory(EnvironmentConstants.OutputPath);
+        if (Directory.Exists(EnvironmentConstants.OutputPath))
+            Directory.Delete(EnvironmentConstants.OutputPath, true);
+        Directory.CreateDirectory(EnvironmentConstants.OutputPath);
 
-        if (!string.IsNullOrWhiteSpace(EnvironmentConstants.InputPath))
-            Directory.CreateDirectory(EnvironmentConstants.InputPath);
+        Directory.CreateDirectory(EnvironmentConstants.InputPath);
     }
 
     [Test]
